@@ -1,0 +1,70 @@
+本ブログラムについて
+
+＜動作環境＞
+OS:　Debian、  Python： Ver 3.2.3
+OS： Windows7、Python： Ver 3.3.2
+において動作を確認
+
+＜使用方法＞
+コマンドラインにて以下を入力
+「python NumberPlace.py FilePath+FileName」
+ (python NumberPlace.py Input_Sample\sample0.txt　など)
+
+＜結果出力について＞
+・解が存在する場合
+  Terminalに解が出力され、かつ入力ファイルと同じフォルダに「入力ファイル名＋answer」として出力される。
+
+・解が存在しない場合
+　1　入力されたファイルそのものの整合性がとれていない場合
+　　（整合性が取れない状態とは、同じブロック（列、行）に同じ数字が存在している状態。）
+　　 =>「This file against rules. Interrupt calculation.」が出力される。
+　　
+　　「添付ファイル：Input_Sample\Cant_calc\block_error1.txt　など」
+	
+　
+　2　全てのセルを埋める事が出来ずに計算が終わってしまう場合
+　　（全ての未確定のセル候補値が0個のなってしまう）
+　　 =>「This matrix(input file) can not solve. I think 」が出力される。
+
+     「添付ファイル：Input_Sample\Cant_calc\haxtupoufusagari.txt など」
+
+＜実装について＞
+　数独表の解を求める方法は以下になります
+     1:論理でセルを埋めれるだけうめる
+   　2:候補値から値を選んで１つだけセルを埋める。
+     3:論理でセルを埋めれるだけうめる
+     4:2に戻る
+　*手順の何処かで解が出れば、解をファイルに出力し、プログラムを終了する。
+  *手順の中で、不整合が生じた場合は呼び出し元関数に戻り、計算を継続する。
+
+　
+＜テストについて＞
+　unittestはコマンドラインにおいて以下を入力ください。
+　python Test.py
+
+＜フォルダ構成＞
+  NumberPlace.py	:数独解算出スクリプトのメイン部分
+  Cell_Matrix.py	:数独表管理スクリプト
+  Cell.py		:数独のセルの管理スクリプト
+　test.py		:ユニットテスト用スクリプト
+  read me.txt		:本ファイル
+
+  Input_Sample ：解が算出可能なもの
+　　・sample0.txt :問題１の出題例で提示されていたもの
+　　・sample1.txt :推定を用いずに論理だけで解が出力できるもの1
+　　・sample2.txt :推定を用いずに論理だけで解が出力できるもの2
+　　・sample3.txt :推定を用いずに論理だけで解が出力できるもの3
+　　・sample4.txt :推定を行わないと解がに到達できないもの1
+　　・sample5.txt :推定を行わないと解がに到達できないもの2
+　　・sample6.txt :推定を行わないと解がに到達できないもの3（世界一難しい数独？）
+
+　Input_Sample\Cant_calc : 解が算出不可能なもの
+    ・block_error1.txt　　　：同じブロックに同じ数字があるので計算できないもの
+    ・row_error1.txt　　　　：同じ行に同じ数字があるので計算できないもの
+    ・column_error1.txt　 　：同じ列に同じ数字があるので計算できないもの
+    ・haxtupoufusagari.txt　：全ての未確定セルの候補値が0個しかなく、これ以上計算できないもの
+
+　test_files : test.py（ユニット）で使用するファイル類
+　　　このフォルダについては詳細は省かせていただきます。
+    
+
