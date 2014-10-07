@@ -3,13 +3,12 @@
 
 import math
 import copy
-
 from Cell_Matrix import Cell_Matrix
 
-def cell_matrix_show(cell_matrix):
-    """debug用Status出力関数"""
-    for cell in cell_matrix:
-        cell.showinfo()
+#def cell_matrix_show(cell_matrix):
+#    """debug用Status出力関数"""
+#    for cell in cell_matrix:
+#        cell.showinfo()
 
 
 def print_answer(cell_matrix):

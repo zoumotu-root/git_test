@@ -9,12 +9,17 @@ class Cell_Matrix:
 
     def __init__(self, file_path):
         self.file_path = file_path
-        self.matrix_size = 0                 #数独表の行（列）数
-        self.block_size = 0                   #ブロックのサイズ　基本は3
+        self.matrix_size = 0
+        #数独表の行（列）数
+        self.block_size = 0
+        #ブロックのサイズ　基本は3
         self.cell_matrix = []
-        self.value_set = set()                #Cellに入力されるべき数字の集合
-        self.unsolved_index_list = []       #このリストが空になれば解決できたと判定する
-        self.is_cell_value_updated = False  #チェック項目を１通り回しても１つも値を更新できた場合はTrueとなる
+        self.value_set = set()
+        #Cellに入力されるべき数字の集合
+        self.unsolved_index_list = []
+        #このリストが空になれば解決できたと判定する
+        self.is_cell_value_updated = False
+        #チェック項目を１通り回しても１つも値を更新できた場合はTrueとなる
 
     def init_Cell_Matrix(self):
         """数独表の作成並びにブロックサイズ、表のサイズの計算、未解決セル一覧作成を行う"""
