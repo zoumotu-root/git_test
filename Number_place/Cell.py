@@ -12,7 +12,8 @@ class Cell:
         self.index = column + row*(block_size**2)       #セルのインデックス9*9なら0－80
 
     def calc_block_index(self, block_size):
-        return self.column//block_size+((self.row//block_size)*block_size)
+    """セルのブロック位置計算関数　"""
+            return self.column//block_size+((self.row//block_size)*block_size)
 
     def showinfo(self):
         """debug用Status出力関数"""
